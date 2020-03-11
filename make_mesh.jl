@@ -53,6 +53,7 @@ struct Mesh
     nodes_per_elmt_edge::Int64
     elmts_per_side::Int64
     element_size::Float64
+    poly_order::Int64
 end
 
 function generate_mesh(width,poly_order,element_size)
@@ -63,7 +64,7 @@ function generate_mesh(width,poly_order,element_size)
 
     xrange = range(0.0,stop=width,length=nodes_per_side)
     connectivity = element_connectivity(elmts_per_side,nodes_per_elmt_edge)
-    return Mesh(xrange,connectivity,nodes_per_elmt_edge,elmts_per_side,element_size)
+    return Mesh(xrange,connectivity,nodes_per_elmt_edge,elmts_per_side,element_size,poly_order)
 end
 
 function nodal_coords_of_elmt(mesh::Mesh,Ei,Ej)
